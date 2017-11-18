@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en=us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman Baseball</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+ <!-- Bootstrap link -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link src = "href="./assets/javascript/hangman.js">
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Oswald" rel="stylesheet">
+  <!-- optional theme -->
+
+</head>
+
+<body>
+<div class="container">
+  <section>
+    <div class="row col-sm-8 col-offset-4"">
+        <h1>Hangman</h1>
+    </div>
+
+    <div class="row">
+  		<div class="col-sm-8 col-offset-4">
+  			<div class="well well-sm row bgdclr">
+  <!--         top section of the well -->
+            <div class="row">
+              <div class="col-md-4 categoryimg"><img src="assets/images/mlb.png">
+              </div>
+              <div class="col-md-4 category">Category<br> Baseball Team Name
+              </div>
+              <div class="col-md-4">
+                  <div class = "panel panel-default">
+                    <div class="panel-heading">Scores</div>
+                    <div class='panel-body'>
+                      <div id="wins">WINS &nbsp;&nbsp;&nbsp;</div>
+                      <div id="loses">LOSES &nbsp;&nbsp;&nbsp;</div>
+                    </div>
+                  </div>
+              </div>    
+            </div>
+  <!-- bottom -->
+           
+        	<div class="row game">
+            <div class="col-md-4 category">
+                <h3 id="tagline">OUTS REMAINING</h3>
+                <div class="row categoryimg" id="out1"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+                <div class="row categoryimg" id="out2"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+                <div class="row categoryimg" id="out3"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+                <div class="row categoryimg" id="out4"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+                <div class="row categoryimg" id="out5"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+                <div class="row categoryimg" id="out6"><img src="assets/images/baseball.png" width="50px" height="50px"></div>
+            </div>   
+            <div class="col-md-8"><!-- <h2>Select a letter "By Pressing Any Letter Key"</h2> -->
+                  <div>
+                    <div id="currentword">Current Word <br><span class="small">(Use the keyboard to pick a letter)</span>
+                    <h2 id="word"></h2>
+                    
+                    </div>
+                    
+                    <div id="lettersguessed">Letters Already Guessed</div>
+                    <div id="letters"></div>
+                      <div id="tagline"></div>
+                  </div>
+            </div>
+        </div>
+       
+        
+       
+        <!-- <button type="button" class="btn btn-default btn-lg btnsz" id="exit">Exit Game</button> -->  
+      <button type="button" class="btn btn-default btn-sm" id="reset">Play Another Game</button>
+
+        </div>     
+      </div>
+  </section>
+</div>
+   
+      
+
+  
+
+</div> <!--  close container div -->
+<footer class="navbar-default navbar-inverse navbar-fixed-bottom">
+    <p>Copyright © 2017 Lucy Mashas</p>
+</footer>  
+
+
+</body>
+</html>
+
+
+
+
+
