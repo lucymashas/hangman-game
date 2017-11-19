@@ -1,12 +1,12 @@
 
   //Global Variables
-    var hangmanWords = ["YANKEES","DODGERS","METS","CUBS","WHITE SOX","ORIOLES","NATIONALS","GIANTS","RED SOX","RANGERS","PHILLIES","MARLINS","ASTROS","BRAVES","MARINERS","TWINS","PADRES"];
+    var hangmanWords = ["YANKEES","DODGERS","METS","CUBS","WHITE SOX","ORIOLES","NATIONALS","GIANTS","REDSOX","RANGERS","PHILLIES","MARLINS","ASTROS","BRAVES","MARINERS","TWINS","PADRES"];
     var letterArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y"];
     var wins = 0;
     var loses = 0;
     var hanged = 0;
-    var guess = [];
     var match = false;
+    var guess = [];
 
 
 //audio files
@@ -16,26 +16,22 @@ var audioElementCheer = document.createElement("audio");
 var audioElementLoses = document.createElement("audio");
       audioElementLoses.setAttribute("src", "./assets/sounds/strike.mp3");
 
+//Star the game, select word
 function startGame()
     {
-      console.log("start game is called");
-      //Initialize Start of Game variables
-      var s;
+
       currentWord = hangmanWords[Math.floor(Math.random() * hangmanWords.length)];
-      for (s = 0; s < currentWord.length; s++) 
+      for (var s = 0; s < currentWord.length; s++) 
       {
-        guess[s] = "__ ";
-        // if(document.getElementById("word") != null){
-        //   var idWord=document.getElementById("word").innerHTML;
-        // }
+        guess[s] = "_ ";
          var idWord = document.getElementById("word");
          idWord.innerHTML += guess[s];   
       }               
     } 
 
-
+//Set the outs opacity
 function outsRemaining(outs){
-       if (outs == 1) {
+      if (outs == 1) {
         document.getElementById("out6").className = "outop";
       } 
       if (outs == 2) {
@@ -75,7 +71,6 @@ function outsRemaining(outs){
         if (match === false)
           {
             document.getElementById("letters").innerHTML += x; 
-            // document.getElementById("out1").className = "outop"; 
             return hanged++;
           }
     }
@@ -89,6 +84,7 @@ function outsRemaining(outs){
         if(letterArr[i].indexOf(let) != -1)
         {
             letterArr.splice(i, 1);
+            // console.log(letterArr);
             found = true;
         }
       }
@@ -105,9 +101,7 @@ function checkWinLoose()
             var string =guess.join("");
             if (string == currentWord)
               {
-                wins++
-                // alert("You Got It!!");
-                // document.getElementById("wins").innerHTML = wins;
+                wins = wins + 1;
                 var addWins = document.getElementById("wins");
                 addWins.textContent += wins;
                 document.getElementById("tagline").innerHTML = "YOU WON";
@@ -116,9 +110,8 @@ function checkWinLoose()
           }
         else if (hanged == 6)
           {
-              loses++;
-              // console.log(hanged);
-              // document.getElementById("letters").innerHTML += "You Lost";
+              // loses++; 
+              loses = loses +1;
               var addLose = document.getElementById("loses");
               addLose.textContent += loses;
               document.getElementById("tagline").innerHTML = "YOU LOST";
@@ -126,52 +119,31 @@ function checkWinLoose()
 
           }
   }
-//Play Again
-//  document.getElementById('reset').onclick = function() {
-//     // var hanged = 0;
-//     // var guess = [];
 
-// //reset word and letters
-//     word.parentNode.removeChild(word);
-//     letters.parentNode.removeChild(letters);
-//     startGame();
-//   }
-window.onload = function(){
 
-  console.log("test ");
-
+ window.onload = function()
+ {
     startGame();
+  }
 
-    document.getElementById('reset').onclick = function() {
-
-    console.log("test 2");
-    // var hanged = 0;
-    // var guess = [];
-
-    //reset word and letters
-    // word.parentNode.removeChild(word);
-    // letters.parentNode.removeChild(letters);
-    word.innerText = "";
-    letters.innerText = "";
-    startGame();
-    }
-
-
-  //Gets start key event
-    // window.onload = startGame();
-    //startGame();
-      
-}
-
-
-
-document.onkeyup = function()
-{ 
-
-  var userGuess = String.fromCharCode(event.keyCode);
-  removeLetter(userGuess);   //CHECKS LETTER
-  outsRemaining(hanged);
-  checkWinLoose(); 
+  document.onkeyup = function()
+  {
+    var userGuess = String.fromCharCode(event.keyCode);
+    removeLetter(userGuess);   //CHECKS LETTER
+    outsRemaining(hanged);
+    checkWinLoose(); 
+    //When Play Again Button is clicked//
     
-}  
-
+    document.getElementById('reset').onclick = function() 
+      {
+        var guess = [];
+        var hanged = 0;
+        var match = false;
+        document.getElementById("letters").innerHTML = "";
+        document.getElementById("word").innerHTML = "";
+        document.getElementById("tagline").innerHTML = "OUTS REMAINING";
+        letterArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y"];
+        startGame();
+      }
+       
+}
