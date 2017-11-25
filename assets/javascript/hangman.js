@@ -103,7 +103,7 @@ function checkWinLoose()
               {
                 wins = wins + 1;
                 var addWins = document.getElementById("wins");
-                addWins.textContent += wins;
+                addWins.textContent = "WINS " + wins;
                 document.getElementById("tagline").innerHTML = "YOU WON";
                 audioElementCheer.play();
               }
@@ -113,7 +113,7 @@ function checkWinLoose()
               // loses++; 
               loses = loses +1;
               var addLose = document.getElementById("loses");
-              addLose.textContent += loses;
+              addLose.textContent = "LOSSES " + loses;
               document.getElementById("tagline").innerHTML = "YOU LOST";
               audioElementLoses.play();
 
@@ -121,8 +121,8 @@ function checkWinLoose()
   }
 
 
- window.onload = function()
- {
+  window.onload = function()
+  {
     startGame();
   }
 
@@ -131,19 +131,27 @@ function checkWinLoose()
     var userGuess = String.fromCharCode(event.keyCode);
     removeLetter(userGuess);   //CHECKS LETTER
     outsRemaining(hanged);
-    checkWinLoose(); 
+    checkWinLoose();
+    // document.getElementById("button").enabled = true; 
     //When Play Again Button is clicked//
     
     document.getElementById('reset').onclick = function() 
       {
-        var guess = [];
-        var hanged = 0;
-        var match = false;
+        // var guess = [];
+        guess = [];
+        // var hanged = 0;
+        hanged = 0;
+        // var match = false;
+        match = false;
         document.getElementById("letters").innerHTML = "";
         document.getElementById("word").innerHTML = "";
         document.getElementById("tagline").innerHTML = "OUTS REMAINING";
         letterArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y"];
+        //reset the outs, outopr is css opacity = 1.0
+        for (var j=1; j<7; j++){
+          document.getElementById("out" + j).className = "row categoryimg outopr";
+        }
         startGame();
       }
        
-}
+  }
