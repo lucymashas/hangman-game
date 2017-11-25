@@ -11,9 +11,7 @@
     background-size: cover;
     color: #296332;
   }
-/*section {
-  width:1024px;
-}*/
+
 h1 {
   font-family: 'Oswald', sans-serif;
   color: #f5f5f5;
@@ -60,8 +58,6 @@ h3 {
   text-align:left;
 }
 
-/*
-Bottom Panel*/
 
 .category {
     margin-top: 20px;
@@ -70,9 +66,15 @@ Bottom Panel*/
 }
 
 .categoryimg {
-
-    padding: 0 10px 10px 18px;
-    opacity: 1;  
+    padding: 0 10px 10px 18px;    
+}
+/*out opacity*/
+.outop {
+    opacity:0.1;
+    
+}
+.outopr{
+  opacity: 1; 
 }
 .scoreboard {
   float:left;
@@ -92,11 +94,25 @@ Bottom Panel*/
 .game{
   clear:both;
 /*  text-align:center;*/
-  padding-bottom:30px;
-  padding-top:10px;
+  padding-bottom:15px;
+  padding-top:15px;
 }
 
-
+/*button active styles*/
+.btn{
+  margin-bottom:15px;
+}
+.btn-active{
+     border: 1px dotted #D0D0B2;
+    color: #D0D0B2;
+    background-color: #2F7532;
+}
+.btn-active:hover{
+     border: 1px dotted #D0D0B2;
+    color: #D0D0B2;
+    background-color: #2F7532;
+    opacity:.7;
+}
 
 /*  ========footer===========   */
 footer {
@@ -112,12 +128,3 @@ footer p{
   color: #ffffff;
 }
 
-/*out opacity*/
-.outop {
-    opacity:0.1;
-    
-}
-/*Media Queries*/
-@media only screen and (max-width: 980px) {
-
-}

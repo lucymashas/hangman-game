@@ -19,7 +19,6 @@ var audioElementLoses = document.createElement("audio");
 //Star the game, select word
 function startGame()
     {
-
       currentWord = hangmanWords[Math.floor(Math.random() * hangmanWords.length)];
       for (var s = 0; s < currentWord.length; s++) 
       {
@@ -28,26 +27,33 @@ function startGame()
          idWord.innerHTML += guess[s];   
       }               
     } 
-
+//enable button
+function actbtn() {
+    // x = document.getElementById("reset").disabled = false;
+    // x.className += 'btn-active';
+    var btnact = document.getElementById("reset");
+    btnact.disabled = false;
+    btnact.className += ' btn-active';
+}
 //Set the outs opacity
 function outsRemaining(outs){
       if (outs == 1) {
-        document.getElementById("out6").className = "outop";
+        document.getElementById("out6").className = "categoryimg outop";
       } 
       if (outs == 2) {
-        document.getElementById("out5").className = "outop";
+        document.getElementById("out5").className = "categoryimg outop";
       } 
        if (outs == 3) {
-        document.getElementById("out4").className = "outop";
+        document.getElementById("out4").className = "categoryimg outop";
       } 
        if (outs == 4) {
-        document.getElementById("out3").className = "outop";
+        document.getElementById("out3").className = "categoryimg outop";
       } 
        if (outs == 5) {
-        document.getElementById("out2").className = "outop";
+        document.getElementById("out2").className = "categoryimg outop";
       } 
        if (outs == 6) {
-        document.getElementById("out1").className = "outop";
+        document.getElementById("out1").className = "categoryimg outop";
       } 
 } 
 
@@ -105,6 +111,7 @@ function checkWinLoose()
                 var addWins = document.getElementById("wins");
                 addWins.textContent = "WINS " + wins;
                 document.getElementById("tagline").innerHTML = "YOU WON";
+                actbtn()
                 audioElementCheer.play();
               }
           }
@@ -115,6 +122,7 @@ function checkWinLoose()
               var addLose = document.getElementById("loses");
               addLose.textContent = "LOSSES " + loses;
               document.getElementById("tagline").innerHTML = "YOU LOST";
+              actbtn()
               audioElementLoses.play();
 
           }
@@ -132,7 +140,7 @@ function checkWinLoose()
     removeLetter(userGuess);   //CHECKS LETTER
     outsRemaining(hanged);
     checkWinLoose();
-    // document.getElementById("button").enabled = true; 
+    
     //When Play Again Button is clicked//
     
     document.getElementById('reset').onclick = function() 
